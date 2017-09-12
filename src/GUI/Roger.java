@@ -17,6 +17,7 @@ public class Roger extends JLabel {
 	ImageIcon right = new ImageIcon(this.getClass().getResource("/Images/RogerRight.png"));
 	ImageIcon up = new ImageIcon(this.getClass().getResource("/Images/RogerUp.png"));
 	ImageIcon down = new ImageIcon(this.getClass().getResource("/Images/RogerDown.png"));
+	ImageIcon gay;
 	
 	public Roger() {
 		setIcon(left);
