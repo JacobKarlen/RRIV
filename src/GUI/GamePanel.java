@@ -1,7 +1,8 @@
 package GUI;
 
-import java.awt.*;
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -33,6 +34,11 @@ public class GamePanel extends JPanel {
 		
 		
 		grid[y + 6][x + 6].add(GameSettings.roger); // center roger on screen
+		
+		ArrayList<Enemy> enemies = GameSettings.enemies; // add all enemies to the screen'
+		for(int i = 0; i < enemies.size(); i++) {
+			grid[enemies.get(i).getY()][enemies.get(i).getX()].add(enemies.get(i));
+		}
 		
 	} // end constructor
 }
