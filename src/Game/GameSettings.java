@@ -1,5 +1,6 @@
 package Game;
 
+import GUI.Enemy;
 import GUI.Roger;
 
 public class GameSettings {
@@ -7,6 +8,7 @@ public class GameSettings {
 	public static int screen_y = 20;
 	public static String movement = ""; 
 	public static Roger roger = new Roger();
+	public static Enemy[] enemies = new Enemy[0];
 	
 	public static void move() {
 		if (movement == "") {

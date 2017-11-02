@@ -1,7 +1,6 @@
 package GUI;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -9,15 +8,12 @@ import javax.swing.JLabel;
 import Game.GameSettings;
 import Game.Main;
 
-import GUI.Map;
-
 public class Roger extends JLabel {
 	
 	ImageIcon left = new ImageIcon(this.getClass().getResource("/Images/RogerLeft.png"));
 	ImageIcon right = new ImageIcon(this.getClass().getResource("/Images/RogerRight.png"));
 	ImageIcon up = new ImageIcon(this.getClass().getResource("/Images/RogerUp.png"));
 	ImageIcon down = new ImageIcon(this.getClass().getResource("/Images/RogerDown.png"));
-	ImageIcon gay;
 	
 	public Roger() {
 		setIcon(left);
@@ -48,6 +44,12 @@ public class Roger extends JLabel {
 	}
 	public void movingDown() {
 		setIcon(down);
+	}
+	public void setHealth(int hp) {
+		ControlPanel.hpBar.updateHealth(hp);
+	}
+	public int getHealth() {
+		return ControlPanel.hpBar.getHealth();
 	}
 	
 }

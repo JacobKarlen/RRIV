@@ -14,8 +14,12 @@ import javax.swing.JPanel;
 
 public class ControlPanel extends JPanel {
 	
-	private JLabel container = new JLabel();
+	private JLabel outerContainer = new JLabel();
+	private JPanel innerContainer = new JPanel();
+	
 	private ImageIcon bg;
+	public static HealthBar hpBar = new HealthBar();
+	public static ExperienceBar xpBar = new ExperienceBar();
 	
 	public ControlPanel() {
 		
@@ -26,16 +30,24 @@ public class ControlPanel extends JPanel {
 		setMinimumSize(new Dimension(534, 768));
 		setVisible(true);
 		
-		container.setIcon(bg);
-		container.setSize(new Dimension(534, 768));
-		container.setPreferredSize(new Dimension(534, 768));
-		container.setOpaque(false);
-		container.setVisible(true);
+		//outer container settings
+		outerContainer.setIcon(bg);
+		outerContainer.setSize(new Dimension(534, 768));
+		outerContainer.setPreferredSize(new Dimension(534, 768));
+		outerContainer.setOpaque(false);
+		outerContainer.setVisible(true);
+
+		//inner container settings
+		innerContainer.setSize(new Dimension(534, 768));
+		innerContainer.setPreferredSize(new Dimension(534, 768));
+		innerContainer.setVisible(true);
+		innerContainer.setOpaque(false);
 		
-		add(container);
+		outerContainer.add(innerContainer);
+		innerContainer.add(hpBar);
+		innerContainer.add(xpBar);
 		
-		HealthBar healthBar = new HealthBar();
-		container.add(healthBar);
+		add(outerContainer);
 		
 	}
 }
