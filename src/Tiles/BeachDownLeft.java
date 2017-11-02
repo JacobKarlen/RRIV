@@ -2,14 +2,15 @@ package Tiles;
 
 import javax.swing.ImageIcon;
 
-public class EdgeTile extends Tile {
+public class BeachDownLeft extends Tile {
 	
 	ImageIcon icon = new ImageIcon(this.getClass().getResource("/Images/EdgeTile.png"));
 	
-	public EdgeTile() {
+	public BeachDownLeft() {
 		super();
 		setIcon(icon);
 		
-		collision = true;
 	}
 }
+
+

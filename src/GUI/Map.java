@@ -6,12 +6,12 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Scanner;
 
-import Tiles.EdgeTile;
-import Tiles.GrassEdgeDown;
-import Tiles.GrassEdgeLeft;
-import Tiles.GrassEdgeRight;
-import Tiles.GrassEdgeUp;
-import Tiles.GrassEdgeUpleft;
+import Tiles.DeepWater;
+import Tiles.BeachUp;
+import Tiles.BeachUpRight;
+import Tiles.BeachRight;
+import Tiles.BeachDownRight;
+import Tiles.BeachDown;
 import Tiles.GrassTile;
 import Tiles.GrassTile2;
 import Tiles.Tile;
@@ -45,29 +45,48 @@ public class Map {
 	}
 	private Tile getTile(String tileID) {
 		Tile tile = new Tile();
-		if(tileID.equals("000")) { // edge-stone tile
-			tile = new EdgeTile();
-		} else if(tileID.equals("001")) { // grass tile 1
-			tile = new GrassTile();
-		} else if(tileID.equals("002")) { // grass tile 2
-			tile = new GrassTile2();
-		} else if(tileID.equals("003")) { // grass edge up
-			tile = new GrassEdgeUp();
-		} else if(tileID.equals("004")) { // grass edge upright
+		if(tileID.equals("000")) { // deep water
+			tile = new DeepWater();
+		} else if(tileID.equals("001")) { // deep-shallow up
+			//tile = new GrassTile();
+		} else if(tileID.equals("002")) { // deep-shallow up right
+			//tile = new GrassTile2();
+		} else if(tileID.equals("003")) { // deep-shallow right
+			//tile = new GrassEdgeUp();
+		} else if(tileID.equals("004")) { // deep-shallow down right
 			//tile = new GrassEdgeUpright();
-		} else if(tileID.equals("005")) { // grass edge right
-			tile = new GrassEdgeRight();
-		} else if(tileID.equals("006")) { // grass edge downright
+		} else if(tileID.equals("005")) { // deep-shallow down
+			//tile = new GrassEdgeRight();
+		} else if(tileID.equals("006")) { // deep-shallow down left
 			//tile = new GrassEdgeDownright();
-		} else if(tileID.equals("007")) { // grass edge down
-			tile = new GrassEdgeDown();
-		} else if(tileID.equals("008")) { // grass edge downleft
+		} else if(tileID.equals("007")) { // deep-shallow left
+			//tile = new BeachUp();
+		} else if(tileID.equals("008")) { // deep-shallow up left
 			//tile = new GrassEdgeDownleft();
-		} else if(tileID.equals("009")) { // grass edge left
-			tile = new GrassEdgeLeft();
-		} else if(tileID.equals("010")) { // grass edge upleft
-			tile = new GrassEdgeUpleft();
+		} else if(tileID.equals("009")) { // shallow water
+			//tile = new BeachUpRight();
+		} else if(tileID.equals("010")) { // beach up
+			//tile = new GrassEdgeUpleft();
+		} else if(tileID.equals("011")) { // beach up right
+			//tile = new GrassEdgeDownleft();
+		} else if(tileID.equals("012")) { // beach right
+			//tile = new GrassEdgeLeft();
+		} else if(tileID.equals("013")) { // beach down right
+			//tile = new GrassEdgeUpleft();
+		} else if(tileID.equals("014")) { // beach down
+			//tile = new GrassEdgeUpleft();
+		} else if(tileID.equals("015")) { // beach down left
+			//tile = new GrassEdgeUpleft();
+		} else if(tileID.equals("016")) { // beach left
+			//tile = new GrassEdgeUpleft();
+		} else if(tileID.equals("017")) { // beach up left
+			//tile = new GrassEdgeUpleft();
+		} else if(tileID.equals("018")) { // grass 1
+			//tile = new GrassEdgeUpleft();
+		} else if(tileID.equals("019")) { // grass 2
+			//tile = new GrassEdgeUpleft();
 		}
+		
 		return tile;
 	}
 }

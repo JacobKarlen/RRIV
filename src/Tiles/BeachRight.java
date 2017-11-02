@@ -2,11 +2,11 @@ package Tiles;
 
 import javax.swing.ImageIcon;
 
-public class GrassEdgeRight extends Tile {
+public class BeachRight extends Tile {
 
 	ImageIcon icon = new ImageIcon(this.getClass().getResource("/Images/GrassEdgeRight.png"));
 	
-	public GrassEdgeRight() {
+	public BeachRight() {
 		super();
 		setIcon(icon);
 	}
