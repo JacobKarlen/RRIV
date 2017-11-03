@@ -9,7 +9,5 @@ public class DeepWater extends Tile {
 	public DeepWater() {
 		super();
 		setIcon(icon);
-		
-		collision = true;
 	}
 }

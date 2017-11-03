@@ -2,16 +2,12 @@ package Tiles;
 
 import javax.swing.ImageIcon;
 
-public class ShallowDeepUpLeft extends Tile {
+public class DeepShallowUpLeft extends Tile {
 	
 	ImageIcon icon = new ImageIcon(this.getClass().getResource("/Images/DeepShallowUpLeft.png"));
 	
-	public ShallowDeepUpLeft() {
+	public DeepShallowUpLeft() {
 		super();
 		setIcon(icon);
-		
-		collision = true;
 	}
 }
-
-

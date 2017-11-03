@@ -5,7 +5,7 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import Game.GameSettings;
+import Game.Main;
 
 public class Enemy extends JLabel{
 	
@@ -18,7 +18,7 @@ public class Enemy extends JLabel{
 	
 	public Enemy(int xPos, int yPos, int type, int lvl) {
 		setIcon(left);
-		GameSettings.enemies.add(this);
+		Main.enemies.add(this);
 		this.x = xPos;
 		this.y = yPos;
 		

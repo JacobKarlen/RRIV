@@ -2,11 +2,12 @@ package GUI;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.util.ArrayList;
+import java.awt.List;
 
 import javax.swing.JPanel;
 
 import Game.GameSettings;
+import Game.Main;
 import Tiles.Tile;
 
 public class GamePanel extends JPanel {
@@ -35,9 +36,9 @@ public class GamePanel extends JPanel {
 		
 		grid[y + 6][x + 6].add(GameSettings.roger); // center roger on screen
 		
-		ArrayList<Enemy> enemies = GameSettings.enemies; // add all enemies to the screen'
-		for(int i = 0; i < enemies.size(); i++) {
-			grid[enemies.get(i).getY()][enemies.get(i).getX()].add(enemies.get(i));
+		// add all enemies to the screen'
+		for(int i = 0; i < Main.enemies.size(); i++) {
+			grid[Main.enemies.get(i).getY()][Main.enemies.get(i).getX()].add(Main.enemies.get(i));
 		}
 		
 	} // end constructor

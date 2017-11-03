@@ -1,5 +1,8 @@
 package Game;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import GUI.Display;
 import GUI.Enemy;
 import GUI.Map;
@@ -9,6 +12,8 @@ public class Main {
 	public static Display display;
 	
 	public static Map map = new Map("/Maps/map1.txt");
+	
+	public static List<Enemy> enemies = new ArrayList<>();
 	
 	public static void main(String[] args) {
 		
@@ -22,8 +27,8 @@ public class Main {
 				GameSettings.move();
 			} 
 			if (counter % 10000000 == 0) {
-				for(int i = 0; i < GameSettings.enemies.size(); i++) {
-					GameSettings.enemies.get(i).move();
+				for(int i = 0; i < enemies.size(); i++) {
+					enemies.get(i).move();
 				}
 			}
 			//System.out.println(counter);
