@@ -11,7 +11,7 @@ import Tiles.*;
 
 public class Map {
 	
-	public Tile[][] grid = new Tile[36][39];
+	public Tile[][] grid = new Tile[72][78];
 	
 	public Map(String fileName) {
 		Scanner sc;

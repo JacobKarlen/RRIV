@@ -12,7 +12,7 @@ public class Main {
 	
 	public static Display display;
 	public static List<Enemy> enemies = new ArrayList();
-	public static Map map = new Map("/Maps/map1.txt");
+	public static Map map = new Map("/Maps/map2.txt");
 	
 	public static Roger roger = new Roger(10, 20);
 	public static Enemy enemy = new Enemy(20,20);
