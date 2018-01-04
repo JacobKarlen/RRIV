@@ -10,10 +10,12 @@ import javax.swing.JLabel;
 import Game.Main;
 import Game.UtilityFunctions;
 
+
 public class Roger extends JLabel {
 	
 	public int x, y;
 	public int direction = 4;
+	
 	
 	ImageIcon left = new ImageIcon(this.getClass().getResource("/Images/RogerLeft.png"));
 	ImageIcon right = new ImageIcon(this.getClass().getResource("/Images/RogerRight.png"));
@@ -50,20 +52,19 @@ public class Roger extends JLabel {
 		}
 		direction = 4;
 		
-		
 		if(UtilityFunctions.validateMove(tx, ty)) {
 			this.x = tx;
 			this.y = ty;
+
 			Main.display.remove(Main.display.gp);
 			Main.display.gp = new GamePanel(this.x, this.y);
 			Main.display.add(Main.display.gp, BorderLayout.WEST);
 			Main.display.gp.revalidate();
 			Main.display.gp.repaint();
 		} else {
-		
+			
 		}
 	}
-
 	public void movingLeft() {
 		setIcon(left);
 	}
@@ -82,5 +83,4 @@ public class Roger extends JLabel {
 	public int getHealth() {
 		return ControlPanel.hpBar.hp;
 	}
-	
 }

@@ -1,11 +1,11 @@
 package GUI;
 
-import java.awt.*;
+
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
-import Game.GameSettings;
 import Game.Main;
 import Tiles.Tile;
 
@@ -41,6 +41,7 @@ public class GamePanel extends JPanel {
 		}
 		//grid[Main.enemy.y + 6][Main.enemy.x].add(Main.enemy);
 		
+
 
 	} // end constructor
 }

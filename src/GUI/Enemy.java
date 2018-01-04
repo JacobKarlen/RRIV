@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.BorderLayout;
+
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -11,7 +12,11 @@ import Game.Main;
 import Game.UtilityFunctions;
 
 
+
+
 public class Enemy extends JLabel {
+	
+
 	ImageIcon left = new ImageIcon(this.getClass().getResource("/Images/RogerLeft.png"));
 	ImageIcon right = new ImageIcon(this.getClass().getResource("/Images/RogerRight.png"));
 	ImageIcon up = new ImageIcon(this.getClass().getResource("/Images/RogerUp.png"));
@@ -60,6 +65,7 @@ public class Enemy extends JLabel {
 		} else {
 			
 		}
+
 
 	}
 	public void movingLeft() {

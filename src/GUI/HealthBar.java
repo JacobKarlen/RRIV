@@ -6,7 +6,7 @@ import java.awt.Font;
 
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-import javax.swing.UIManager;
+
 
 public class HealthBar extends JPanel {
 	
@@ -28,7 +28,7 @@ public class HealthBar extends JPanel {
 		
 		bar.setMinimumSize(new Dimension(534, 30));
 		bar.setPreferredSize(new Dimension(500, 30));
-		bar.setString("FUCK");
+
 		bar.setStringPainted(true);
 		bar.setVisible(true);
 		bar.setOpaque(true);
@@ -44,6 +44,12 @@ public class HealthBar extends JPanel {
 			String s = bar.getValue() + " / " + bar.getMaximum() + " HP";
 			bar.setString(s);
 			bar.setStringPainted(true);
+
+			bar.revalidate();
+			bar.repaint();
 		}
+	}
+	public int getHealth() {
+		return hp;
 	}
 }

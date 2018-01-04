@@ -3,6 +3,7 @@ package Tiles;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 
+
 public class Tile extends JLabel {
 	
 	public boolean collision = false;

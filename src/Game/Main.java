@@ -37,7 +37,7 @@ public class Main {
 					enemies.get(i).move();
 				}
 			}
-		}
 		
 	}
+}
 }
