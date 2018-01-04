@@ -1,13 +1,15 @@
 package GUI;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.Random;
 
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 import Game.Main;
 
-public class Enemy extends JLabel{
+public class Enemy extends Roger {
 	
 	ImageIcon left = new ImageIcon(this.getClass().getResource("/Images/RogerLeft.png"));
 	ImageIcon right = new ImageIcon(this.getClass().getResource("/Images/RogerRight.png"));
@@ -17,17 +19,16 @@ public class Enemy extends JLabel{
 	private int x, y;
 	
 	public Enemy(int xPos, int yPos, int type, int lvl) {
+		super(xPos, yPos);
 		setIcon(left);
+		setVisible(true);
 		Main.enemies.add(this);
-		this.x = xPos;
-		this.y = yPos;
-		
 	}
 	
 	public void move() {
+		int initX = this.x, initY = this.y;
 		Random rand = new Random();
 		int randDir = rand.nextInt(5);
-		
 		if(randDir == 0) { // up 
 			this.movingUp();
 			this.y--;
@@ -43,7 +44,16 @@ public class Enemy extends JLabel{
 		} else { // no movement
 			
 		}
-		
+		if(super.validateMove(this.x, this.y)) {
+			Main.display.remove(Main.display.gp);
+			Main.display.gp = new GamePanel(Main.roger.getX(), Main.roger.getY());
+			Main.display.add(Main.display.gp, BorderLayout.WEST);
+			Main.display.gp.revalidate();
+			Main.display.gp.repaint();
+		} else {
+			y = initY;
+			x = initX;
+		}
 	}
 	public int getY() {
 		return this.y;

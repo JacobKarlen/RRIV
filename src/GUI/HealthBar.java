@@ -6,7 +6,8 @@ import java.awt.Font;
 
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-import javax.swing.UIManager;
+
+import Game.Main;
 
 public class HealthBar extends JPanel {
 	
@@ -39,9 +40,12 @@ public class HealthBar extends JPanel {
 	public void updateHealth(int health) {
 		if(health >= bar.getMinimum() && health <= bar.getMaximum()) {
 			hp = health;
+			bar.setValue(hp);
 			String s = bar.getValue() + " / " + bar.getMaximum() + " HP";
 			bar.setString(s);
 			bar.setStringPainted(true);
+			bar.revalidate();
+			bar.repaint();
 		}
 	}
 	public int getHealth() {

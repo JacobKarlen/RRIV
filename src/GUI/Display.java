@@ -6,7 +6,6 @@ import java.awt.KeyboardFocusManager;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Game.GameSettings;
 import Game.Main;
 import IO.KeyInput;
 
@@ -22,7 +21,7 @@ public class Display extends JFrame {
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		this.setUndecorated(true);
 		setVisible(true);
-		gp = new GamePanel(GameSettings.screen_x, GameSettings.screen_y);
+		gp = new GamePanel(Main.roger.getX(), Main.roger.getY());
 		cp = new ControlPanel();
 		add(gp, BorderLayout.WEST);
 		add(cp, BorderLayout.EAST);
