@@ -52,7 +52,7 @@ public class Enemy extends JLabel {
 				this.x = tx;
 				this.y = ty;
 				Main.display.remove(Main.display.gp);
-				Main.display.gp = new GamePanel(GameSettings.roger.x, GameSettings.roger.y);
+				Main.display.gp = new GamePanel(Main.roger.x, Main.roger.y);
 				Main.display.add(Main.display.gp, BorderLayout.WEST);
 				Main.display.gp.revalidate();
 				Main.display.gp.repaint();

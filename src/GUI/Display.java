@@ -22,7 +22,7 @@ public class Display extends JFrame {
 		// setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		this.setUndecorated(true);
 		setVisible(true);
-		gp = new GamePanel(GameSettings.roger.x, GameSettings.roger.y);
+		gp = new GamePanel(Main.roger.x, Main.roger.y);
 		cp = new ControlPanel();
 		add(gp, BorderLayout.WEST);
 		add(cp, BorderLayout.EAST);

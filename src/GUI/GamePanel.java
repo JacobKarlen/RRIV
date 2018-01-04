@@ -33,7 +33,7 @@ public class GamePanel extends JPanel {
 			}
 		
 		
-		grid[y + 6][x + 6].add(GameSettings.roger); // center roger on screen
+		grid[y + 6][x + 6].add(Main.roger); // center roger on screen
 		
 		for(int i = 0; i < Main.enemies.size(); i++) {
 			Enemy enemy = Main.enemies.get(i);
