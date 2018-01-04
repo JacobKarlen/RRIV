@@ -19,10 +19,10 @@ public class Display extends JFrame {
 		super("Rogers Revenge IV");
 		setSize(1366, 768);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
+		// setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		this.setUndecorated(true);
 		setVisible(true);
-		gp = new GamePanel(GameSettings.screen_x, GameSettings.screen_y);
+		gp = new GamePanel(GameSettings.roger.x, GameSettings.roger.y);
 		cp = new ControlPanel();
 		add(gp, BorderLayout.WEST);
 		add(cp, BorderLayout.EAST);

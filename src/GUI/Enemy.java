@@ -1,9 +1,8 @@
 package GUI;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import java.util.Random;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -11,71 +10,68 @@ import Game.GameSettings;
 import Game.Main;
 import Game.UtilityFunctions;
 
-public class Roger extends JLabel {
-	
-	public int x, y;
-	public int direction = 4;
-	
+
+public class Enemy extends JLabel {
 	ImageIcon left = new ImageIcon(this.getClass().getResource("/Images/RogerLeft.png"));
 	ImageIcon right = new ImageIcon(this.getClass().getResource("/Images/RogerRight.png"));
 	ImageIcon up = new ImageIcon(this.getClass().getResource("/Images/RogerUp.png"));
 	ImageIcon down = new ImageIcon(this.getClass().getResource("/Images/RogerDown.png"));
+
+	public int x, y;
 	
-	public Roger(int xPos, int yPos) {
+	public Enemy(int xPos, int yPos) {
 		setIcon(left);
-		setBorder(BorderFactory.createCompoundBorder(
-				BorderFactory.createLineBorder(Color.red),
-				this.getBorder()));
 		this.x = xPos;
 		this.y = yPos;
+		Main.enemies.add(this);
 	}
-	
 	public void move() {
 		int tx = this.x;
 		int ty = this.y;
 		
-		if (direction == 0) { // up
+		Random rand = new Random();
+		int randDir = rand.nextInt(5);
+		if(randDir == 0) {
+			this.movingUp();
 			ty--;
-			movingUp();
-		} else if (direction == 1) { // right
+		} else if(randDir == 1) {
+			this.movingRight();
 			tx++;
-			movingRight();
-		} else if(direction == 2) { // down
+		} else if(randDir == 2 ){
+			this.movingDown();
 			ty++;
-			movingDown();
-		} else if(direction == 3) { // left
+		} else if(randDir == 3) {
+			this.movingLeft();
 			tx--;
-			movingLeft();
-		} else if(direction == 4) { // no movement
+		} else {
 			
 		}
-		direction = 4;
 		
-		
+	
 		if(UtilityFunctions.validateMove(tx, ty)) {
-			this.x = tx;
-			this.y = ty;
-			Main.display.remove(Main.display.gp);
-			Main.display.gp = new GamePanel(this.x, this.y);
-			Main.display.add(Main.display.gp, BorderLayout.WEST);
-			Main.display.gp.revalidate();
-			Main.display.gp.repaint();
+				this.x = tx;
+				this.y = ty;
+				Main.display.remove(Main.display.gp);
+				Main.display.gp = new GamePanel(GameSettings.roger.x, GameSettings.roger.y);
+				Main.display.add(Main.display.gp, BorderLayout.WEST);
+				Main.display.gp.revalidate();
+				Main.display.gp.repaint();
+			
 		} else {
-		
+			
 		}
-	}
 
+	}
 	public void movingLeft() {
 		setIcon(left);
-	}
-	public void movingRight() {
-		setIcon(right);
 	}
 	public void movingUp() {
 		setIcon(up);
 	}
+	public void movingRight() {
+		setIcon(right);
+	}
 	public void movingDown() {
 		setIcon(down);
 	}
-	
 }
