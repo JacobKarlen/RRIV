@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -51,7 +52,6 @@ public class ArenaPanel extends JPanel {
 			fighterHP = new HealthBar();
 			//playerHP.updateHealth(fighter.getHealth()); // the real one
 			fighterHP.setHP(250);
-			//fighterHP.setPreferredSize(new Dimension(300, 30));
 			add(fighterHP);
 			fighterEnergy = new EnergyBar();
 			add(fighterEnergy);
@@ -75,11 +75,30 @@ public class ArenaPanel extends JPanel {
 	
 	private class ControlPanel extends JPanel {
 		
+		private int playerLevel = Main.roger.getLevel();
+		
+		private JButton basic = new JButton("<html><center>" + "Basic Attack (Deal " + playerLevel * 15 + " damage, restore 50 energy.)" + "</center></html>"),
+				block = new JButton("<html><center>"+ "Shield Block (Block next attack, restore 50 energy)" + "</center></html>"),
+				special= new JButton("<html><center>" + "Special Attack (Deal " + playerLevel * 50 + "-" + playerLevel * 100 + " damage, use 150 energy)" + "</center></html>"),
+				ultra = new JButton("<html><center>" + "Ultra Attack (Deal " + playerLevel * 150 + "-" + playerLevel * 300 + " damage, use 500 energy)" + "</center></html>");
+		
 		private ControlPanel() {
 			setPreferredSize(new Dimension(832, 180));
 			setVisible(true);
 			setOpaque(true);
 			setBackground(Color.green);
+			
+			add(basic);
+			basic.setPreferredSize(new Dimension(140, 80));
+			
+			add(block);
+			block.setPreferredSize(new Dimension(140, 80));
+			
+			add(special);
+			special.setPreferredSize(new Dimension(140, 80));
+			
+			add(ultra);
+			ultra.setPreferredSize(new Dimension(140, 80));
 		}
 	}
 	
