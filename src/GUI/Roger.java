@@ -15,7 +15,6 @@ public class Roger extends Character {
 	public int x, y;
 	public int direction = 4;
 	private int level;
-	private String name = "Roger";
 	
 	
 	ImageIcon left = new ImageIcon(this.getClass().getResource("/Images/RogerLeft.png"));
@@ -24,7 +23,9 @@ public class Roger extends Character {
 	ImageIcon down = new ImageIcon(this.getClass().getResource("/Images/RogerDown.png"));
 	
 	public Roger(int xPos, int yPos) {
-		super(xPos, yPos, 1, "Roger");
+		super(xPos, yPos, 1, "Roger", 500, 500);
+		x = xPos;
+		y = yPos;
 		setIcon(left);
 	}
 	
@@ -77,10 +78,8 @@ public class Roger extends Character {
 	public void setHealth(int hp) {
 		ControlPanel.hpBar.setHP(hp);
 	}
-	public int getHealth() {
-		return ControlPanel.hpBar.getHP();
-	}
-//	public int getLevel() {
-//		return this.level;
+//	public int getHealth() {
+//		return ControlPanel.hpBar.getHP();
 //	}
+
 }

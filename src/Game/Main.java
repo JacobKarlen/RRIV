@@ -3,6 +3,7 @@ package Game;
 import java.util.ArrayList;
 import java.util.List;
 
+import GUI.ControlPanel;
 import GUI.Display;
 import GUI.Enemy;
 import GUI.Map;
@@ -15,7 +16,7 @@ public class Main {
 	public static Map map = new Map("/Maps/map2.txt");
 	
 	public static Roger roger = new Roger(20, 20);
-	public static Enemy enemy = new Enemy(20, 20, 1, "Murloc");
+	public static Enemy enemy = new Enemy(20, 10, 2, "Murloc");
 	
 	public static void main(String[] args) {
 		
@@ -28,7 +29,8 @@ public class Main {
 				roger.move();
 				for(int i = 0; i < enemies.size(); i++) {
 					if(roger.x == enemies.get(i).x && roger.y == enemies.get(i).y) {
-						roger.setHealth(roger.getHealth() - 20);
+						roger.setHP(roger.getHP() - 20);
+						ControlPanel.hpBar.updateValue(roger.getHP());
 						ArenaLoop.ArenaBattle(enemy);
 					}
 				}

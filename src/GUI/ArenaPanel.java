@@ -24,7 +24,7 @@ public class ArenaPanel extends JPanel {
 	private class FighterPanel extends JPanel {
 		
 		private JLabel fighterName = new JLabel();
-		private HealthBar fighterHP = new HealthBar();
+		private HealthBar fighterHP;
 		private EnergyBar fighterEnergy = new EnergyBar();
 		
 		private FighterPanel(Character fighter) {
@@ -34,12 +34,10 @@ public class ArenaPanel extends JPanel {
 			setSize(new Dimension(300, 588));
 			setPreferredSize(new Dimension(300, 588));
 			setVisible(true);
-			setBackground(Color.blue);
+			setBackground(Color.black);
 			setOpaque(true);
-		
 			
 			fighterName.setText(fighter.getName() + ", " + fighter.getLevel()); // the real one
-			//fighterName.setText("Roger, lvl 3");
 			fighterName.setBackground(Color.lightGray);
 			fighterName.setPreferredSize(new Dimension(300, 30));
 			fighterName.setBorder(BorderFactory.createLineBorder(Color.green, 3));
@@ -49,9 +47,8 @@ public class ArenaPanel extends JPanel {
 			fighterName.setOpaque(true);
 			
 			add(fighterName);
-			fighterHP = new HealthBar();
-			//playerHP.updateHealth(fighter.getHealth()); // the real one
-			fighterHP.setHP(250);
+			fighterHP = new HealthBar(fighter.getHP(), fighter.getMaximumHP());
+			fighterHP.updateValue(fighter.getHP());
 			add(fighterHP);
 			fighterEnergy = new EnergyBar();
 			add(fighterEnergy);

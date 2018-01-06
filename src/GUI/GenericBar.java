@@ -56,4 +56,9 @@ public class GenericBar extends JPanel {
 	public int getValue() {
 		return this.value;
 	}
+	public void setMaximum(int max) {
+		bar.setMaximum(max);
+		bar.revalidate();
+		bar.repaint();
+	}
 }

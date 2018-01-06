@@ -20,13 +20,14 @@ public class Enemy extends Character {
 	ImageIcon up = new ImageIcon(this.getClass().getResource("/Images/RogerUp.png"));
 	ImageIcon down = new ImageIcon(this.getClass().getResource("/Images/RogerDown.png"));
 
-	private int level;
-	private String name;
+	private int maximumHP, hp;
 	
 	public int x, y;
 	
 	public Enemy(int xPos, int yPos, int lvl, String enemyName) {
-		super(xPos, yPos, lvl, enemyName);
+		super(xPos, yPos, lvl, enemyName, 500 * lvl, 500 * lvl);
+		x = xPos;
+		y = yPos;
 		Main.enemies.add(this);
 	}
 	public void move() {
@@ -141,10 +142,7 @@ public class Enemy extends Character {
 	public void movingDown() {
 		setIcon(down);
 	}
-//	public int getLevel() {
-//		return this.level;
-//	}
-//	public String getName() {
-//		return this.name;
-//	}
+	public void setHealth(int newHP) {
+		this.hp = newHP;
+	}
 }

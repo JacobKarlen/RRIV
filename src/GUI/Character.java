@@ -17,6 +17,8 @@ public class Character extends JLabel {
 	public int direction = 4;
 	private int level;
 	private String name;
+	private int hp;
+	private int maximumHP;
 	
 	
 	ImageIcon left = new ImageIcon(this.getClass().getResource("/Images/RogerLeft.png"));
@@ -24,51 +26,17 @@ public class Character extends JLabel {
 	ImageIcon up = new ImageIcon(this.getClass().getResource("/Images/RogerUp.png"));
 	ImageIcon down = new ImageIcon(this.getClass().getResource("/Images/RogerDown.png"));
 	
-	public Character(int xPos, int yPos, int characterLevel, String characterName) {
+	public Character(int xPos, int yPos, int characterLevel, String characterName, int hp, int maximumHP) {
 		setIcon(left);
 		setBorder(BorderFactory.createCompoundBorder(
 				BorderFactory.createLineBorder(Color.red),
 				this.getBorder()));
-		this.x = xPos;
-		this.y = yPos;
-		this.level = characterLevel;
-		this.name = characterName;
+		this.hp = hp;
+		this.maximumHP = maximumHP;
+		level = characterLevel;
+		name = characterName;
 	}
 	
-	public void move() {
-		int tx = this.x;
-		int ty = this.y;
-		
-		if (direction == 0) { // up
-			ty--;
-			movingUp();
-		} else if (direction == 1) { // right
-			tx++;
-			movingRight();
-		} else if(direction == 2) { // down
-			ty++;
-			movingDown();
-		} else if(direction == 3) { // left
-			tx--;
-			movingLeft();
-		} else if(direction == 4) { // no movement
-			
-		}
-		direction = 4;
-		
-		if(UtilityFunctions.validateMove(tx, ty)) {
-			this.x = tx;
-			this.y = ty;
-
-			Main.display.remove(Main.display.gp);
-			Main.display.gp = new GamePanel(this.x, this.y);
-			Main.display.add(Main.display.gp, BorderLayout.WEST);
-			Main.display.gp.revalidate();
-			Main.display.gp.repaint();
-		} else {
-			
-		}
-	}
 	public void movingLeft() {
 		setIcon(left);
 	}
@@ -84,13 +52,21 @@ public class Character extends JLabel {
 	public void setHealth(int hp) {
 		ControlPanel.hpBar.setHP(hp);
 	}
-	public int getHealth() {
-		return ControlPanel.hpBar.getHP();
-	}
 	public int getLevel() {
-		return this.level;
+		return level;
 	}
 	public String getName() {
-		return this.name;
+		return name;
 	}
+	public int getHP() {
+		//return ControlPanel.hpBar.getHP();
+		return this.hp;
+	}
+	public void setHP(int newHP) {
+		hp = newHP;
+	}
+	public int getMaximumHP() {
+		return maximumHP;
+	}
+	
 }
