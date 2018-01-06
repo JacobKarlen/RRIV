@@ -6,7 +6,6 @@ import java.awt.event.KeyEvent;
 
 import GUI.Display;
 import GUI.GamePanel;
-import Game.GameSettings;
 
 import Game.Main;
 

@@ -32,7 +32,7 @@ public class Main {
 					}
 				}
 			}
-			if(counter % 200000000 == 0) {
+			if(counter % 50000000 == 0) {
 				for(int i = 0; i < enemies.size(); i++) {
 					enemies.get(i).move();
 				}

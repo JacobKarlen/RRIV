@@ -1,13 +1,11 @@
 package GUI;
 
 import java.awt.BorderLayout;
-
 import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import Game.GameSettings;
 import Game.Main;
 import Game.UtilityFunctions;
 
@@ -39,18 +37,80 @@ public class Enemy extends JLabel {
 		int tx = this.x;
 		int ty = this.y;
 		
+		int range = 3; 
+		// checking 7x7 (2*range+1)(2*range+1) area arround enemy to detect player, if seen, move towards it
+		
+		int direction = 0;
 		Random rand = new Random();
-		int randDir = rand.nextInt(5);
-		if(randDir == 0) {
+		
+		if(Main.roger.x == this.x && Main.roger.y == this.y) { // enemy and player in same coords
+			direction = 4;
+		} else if((Main.roger.x <= this.x + range && Main.roger.x >= this.x) && (Main.roger.y <= this.y + range && Main.roger.y >= this.y)) { // within botton right corner
+			if(Main.roger.x == this.x) { 
+				direction = 2; // down
+			} else if(Main.roger.y == this.y) {
+				direction = 1; // right
+			} else {
+				int temp = rand.nextInt(2);
+				if(temp == 0) {
+					direction = 2; // down
+				} else {
+					direction = 1; // right
+				}
+			}
+		} else if((Main.roger.x <= this.x + range && Main.roger.x >= this.x) && (Main.roger.y <= this.y && Main.roger.y >= this.y - range)) { // within top right corner
+			if(Main.roger.x == this.x) {
+				direction = 0; //up
+			} else if(Main.roger.y == this.y) {
+				direction = 1; // right
+			} else {
+				int temp = rand.nextInt(2);
+				if(temp == 0) {
+					direction = 0; // up
+				} else {
+					direction = 1; // right
+				}
+			}
+		} else if((Main.roger.x <= this.x && Main.roger.x >= this.x - range) && (Main.roger.y <= this.y + range && Main.roger.y >= this.y)) { // within bottom left corner
+			if(Main.roger.x == this.x) {
+				direction = 2; // down
+			} else if(Main.roger.y == this.y) {
+				direction = 3; // left
+			} else {
+				int temp = rand.nextInt(2);
+				if(temp == 0) {
+					direction = 2; // down
+				} else {
+					direction = 3; // left
+				}
+			}
+		} else if((Main.roger.x <= this.x && Main.roger.x >= this.x - range) && (Main.roger.y <= this.y && Main.roger.y >= this.y - range)) { // within top left corner
+			if(Main.roger.x == this.x) {
+				direction = 0; // up
+			} else if(Main.roger.y == this.y) {
+				direction = 3; // left
+			} else {
+				int temp = rand.nextInt(2);
+				if(temp == 0) {
+					direction = 0; // up
+				} else {
+					direction = 3; // left
+				}
+			}
+		} else {
+			direction = rand.nextInt(5);
+		}
+		
+		if(direction == 0) {
 			this.movingUp();
 			ty--;
-		} else if(randDir == 1) {
+		} else if(direction == 1) {
 			this.movingRight();
 			tx++;
-		} else if(randDir == 2 ){
+		} else if(direction == 2 ){
 			this.movingDown();
 			ty++;
-		} else if(randDir == 3) {
+		} else if(direction == 3) {
 			this.movingLeft();
 			tx--;
 		} else {
