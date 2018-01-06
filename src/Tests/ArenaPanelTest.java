@@ -8,8 +8,8 @@ import javax.swing.JFrame;
 import GUI.ArenaPanel;
 import Game.Main;
 
-public class GamePanelTest extends JFrame {
-	public GamePanelTest() {
+public class ArenaPanelTest extends JFrame {
+	public ArenaPanelTest() {
 		super("Rogers Revenge IV");
 		setSize(1366, 768);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -29,7 +29,7 @@ public class GamePanelTest extends JFrame {
 	
 	}
 	public static void main(String[] args) {
-		GamePanelTest test = new GamePanelTest();
+		ArenaPanelTest test = new ArenaPanelTest();
 		
 	}
 }
