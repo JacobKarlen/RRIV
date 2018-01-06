@@ -15,7 +15,7 @@ public class Main {
 	public static Map map = new Map("/Maps/map2.txt");
 	
 	public static Roger roger = new Roger(10, 20);
-	public static Enemy enemy = new Enemy(20,20);
+	public static Enemy enemy = new Enemy(20, 20, 1, "Murloc");
 	
 	public static void main(String[] args) {
 		

@@ -19,11 +19,11 @@ public class Display extends JFrame {
 		setSize(1366, 768);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		// setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
+		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		this.setUndecorated(true);
 		setVisible(true);
 		gp = new GamePanel(Main.roger.x, Main.roger.y);
-
+		
 		cp = new ControlPanel();
 		add(gp, BorderLayout.WEST);
 		add(cp, BorderLayout.EAST);

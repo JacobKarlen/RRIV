@@ -22,12 +22,17 @@ public class Enemy extends JLabel {
 	ImageIcon up = new ImageIcon(this.getClass().getResource("/Images/RogerUp.png"));
 	ImageIcon down = new ImageIcon(this.getClass().getResource("/Images/RogerDown.png"));
 
+	private int level;
+	private String name;
+	
 	public int x, y;
 	
-	public Enemy(int xPos, int yPos) {
+	public Enemy(int xPos, int yPos, int lvl, String enemyName) {
 		setIcon(left);
 		this.x = xPos;
 		this.y = yPos;
+		this.level = lvl;
+		this.name = enemyName;
 		Main.enemies.add(this);
 	}
 	public void move() {
@@ -54,13 +59,13 @@ public class Enemy extends JLabel {
 		
 	
 		if(UtilityFunctions.validateMove(tx, ty)) {
-				this.x = tx;
-				this.y = ty;
-				Main.display.remove(Main.display.gp);
-				Main.display.gp = new GamePanel(Main.roger.x, Main.roger.y);
-				Main.display.add(Main.display.gp, BorderLayout.WEST);
-				Main.display.gp.revalidate();
-				Main.display.gp.repaint();
+			this.x = tx;
+			this.y = ty;
+			Main.display.remove(Main.display.gp);
+			Main.display.gp = new GamePanel(Main.roger.x, Main.roger.y);
+			Main.display.add(Main.display.gp, BorderLayout.WEST);
+			Main.display.gp.revalidate();
+			Main.display.gp.repaint();
 			
 		} else {
 			
@@ -79,5 +84,11 @@ public class Enemy extends JLabel {
 	}
 	public void movingDown() {
 		setIcon(down);
+	}
+	public int getLevel() {
+		return this.level;
+	}
+	public String getName() {
+		return this.name;
 	}
 }

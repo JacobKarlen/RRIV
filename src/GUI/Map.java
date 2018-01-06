@@ -76,9 +76,9 @@ public class Map {
 		} else if(tileID.equals("017")) { // beach up left
 			tile = new BeachUpLeft();
 		} else if(tileID.equals("018")) { // grass 1
-			//tile = new GrassEdgeUpleft();
+			tile = new GrassTile();
 		} else if(tileID.equals("019")) { // grass 2
-			//tile = new GrassEdgeUpleft();
+			tile = new GrassTile2();
 		}
 		
 		return tile;

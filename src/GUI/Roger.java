@@ -15,6 +15,8 @@ public class Roger extends JLabel {
 	
 	public int x, y;
 	public int direction = 4;
+	private int level;
+	private String name = "Roger";
 	
 	
 	ImageIcon left = new ImageIcon(this.getClass().getResource("/Images/RogerLeft.png"));
@@ -29,6 +31,7 @@ public class Roger extends JLabel {
 				this.getBorder()));
 		this.x = xPos;
 		this.y = yPos;
+		this.level = 1;
 	}
 	
 	public void move() {
@@ -78,9 +81,12 @@ public class Roger extends JLabel {
 		setIcon(down);
 	}
 	public void setHealth(int hp) {
-		ControlPanel.hpBar.updateHealth(hp);
+		ControlPanel.hpBar.setHP(hp);
 	}
 	public int getHealth() {
-		return ControlPanel.hpBar.hp;
+		return ControlPanel.hpBar.getHP();
+	}
+	public int getLevel() {
+		return this.level;
 	}
 }
