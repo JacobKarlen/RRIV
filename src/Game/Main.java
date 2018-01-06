@@ -14,7 +14,7 @@ public class Main {
 	public static List<Enemy> enemies = new ArrayList();
 	public static Map map = new Map("/Maps/map2.txt");
 	
-	public static Roger roger = new Roger(10, 20);
+	public static Roger roger = new Roger(20, 20);
 	public static Enemy enemy = new Enemy(20, 20, 1, "Murloc");
 	
 	public static void main(String[] args) {
@@ -29,6 +29,7 @@ public class Main {
 				for(int i = 0; i < enemies.size(); i++) {
 					if(roger.x == enemies.get(i).x && roger.y == enemies.get(i).y) {
 						roger.setHealth(roger.getHealth() - 20);
+						ArenaLoop.ArenaBattle(enemy);
 					}
 				}
 			}

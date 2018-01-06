@@ -12,7 +12,7 @@ import Game.UtilityFunctions;
 
 
 
-public class Enemy extends JLabel {
+public class Enemy extends Character {
 	
 
 	ImageIcon left = new ImageIcon(this.getClass().getResource("/Images/RogerLeft.png"));
@@ -26,19 +26,15 @@ public class Enemy extends JLabel {
 	public int x, y;
 	
 	public Enemy(int xPos, int yPos, int lvl, String enemyName) {
-		setIcon(left);
-		this.x = xPos;
-		this.y = yPos;
-		this.level = lvl;
-		this.name = enemyName;
+		super(xPos, yPos, lvl, enemyName);
 		Main.enemies.add(this);
 	}
 	public void move() {
 		int tx = this.x;
 		int ty = this.y;
 		
-		int range = 3; 
-		// checking 7x7 (2*range+1)(2*range+1) area arround enemy to detect player, if seen, move towards it
+		int range = 6; 
+		// checking 13x13 (2*range+1)(2*range+1) area arround enemy to detect player, if seen, move towards it
 		
 		int direction = 0;
 		Random rand = new Random();
@@ -145,10 +141,10 @@ public class Enemy extends JLabel {
 	public void movingDown() {
 		setIcon(down);
 	}
-	public int getLevel() {
-		return this.level;
-	}
-	public String getName() {
-		return this.name;
-	}
+//	public int getLevel() {
+//		return this.level;
+//	}
+//	public String getName() {
+//		return this.name;
+//	}
 }

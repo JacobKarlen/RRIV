@@ -5,17 +5,18 @@ import java.awt.Color;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 import Game.Main;
 import Game.UtilityFunctions;
 
 
-public class Roger extends Character {
+public class Character extends JLabel {
 	
 	public int x, y;
 	public int direction = 4;
 	private int level;
-	private String name = "Roger";
+	private String name;
 	
 	
 	ImageIcon left = new ImageIcon(this.getClass().getResource("/Images/RogerLeft.png"));
@@ -23,9 +24,15 @@ public class Roger extends Character {
 	ImageIcon up = new ImageIcon(this.getClass().getResource("/Images/RogerUp.png"));
 	ImageIcon down = new ImageIcon(this.getClass().getResource("/Images/RogerDown.png"));
 	
-	public Roger(int xPos, int yPos) {
-		super(xPos, yPos, 1, "Roger");
+	public Character(int xPos, int yPos, int characterLevel, String characterName) {
 		setIcon(left);
+		setBorder(BorderFactory.createCompoundBorder(
+				BorderFactory.createLineBorder(Color.red),
+				this.getBorder()));
+		this.x = xPos;
+		this.y = yPos;
+		this.level = characterLevel;
+		this.name = characterName;
 	}
 	
 	public void move() {
@@ -80,7 +87,10 @@ public class Roger extends Character {
 	public int getHealth() {
 		return ControlPanel.hpBar.getHP();
 	}
-//	public int getLevel() {
-//		return this.level;
-//	}
+	public int getLevel() {
+		return this.level;
+	}
+	public String getName() {
+		return this.name;
+	}
 }
