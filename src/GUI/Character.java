@@ -20,35 +20,16 @@ public class Character extends JLabel {
 	private int hp;
 	private int maximumHP;
 	
-	
-	ImageIcon left = new ImageIcon(this.getClass().getResource("/Images/RogerLeft.png"));
-	ImageIcon right = new ImageIcon(this.getClass().getResource("/Images/RogerRight.png"));
-	ImageIcon up = new ImageIcon(this.getClass().getResource("/Images/RogerUp.png"));
-	ImageIcon down = new ImageIcon(this.getClass().getResource("/Images/RogerDown.png"));
-	
-	public Character(int xPos, int yPos, int characterLevel, String characterName, int hp, int maximumHP) {
-		setIcon(left);
+	public Character(int xPos, int yPos, int characterLevel, String characterName, int _hp, int _maximumHP) {
 		setBorder(BorderFactory.createCompoundBorder(
 				BorderFactory.createLineBorder(Color.red),
 				this.getBorder()));
-		this.hp = hp;
-		this.maximumHP = maximumHP;
+		hp = _hp;
+		maximumHP = _maximumHP;
 		level = characterLevel;
 		name = characterName;
 	}
 	
-	public void movingLeft() {
-		setIcon(left);
-	}
-	public void movingRight() {
-		setIcon(right);
-	}
-	public void movingUp() {
-		setIcon(up);
-	}
-	public void movingDown() {
-		setIcon(down);
-	}
 	public void setHealth(int hp) {
 		ControlPanel.hpBar.setHP(hp);
 	}

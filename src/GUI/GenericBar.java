@@ -41,11 +41,13 @@ public class GenericBar extends JPanel {
 	}
 	public void updateValue(int newValue) {
 		if(newValue > bar.getMaximum()) {
-			this.value = bar.getMaximum();
+			value = bar.getMaximum();
 		} else if(newValue >= bar.getMinimum()) {
-			this.value = newValue;
+			value = newValue;
+		} else {
+			value = 0;
 		}
-		bar.setValue(this.value);
+		bar.setValue(value);
 		String s = bar.getValue() + " / " + bar.getMaximum() + " " + this.unit;
 		bar.setString(s);
 		bar.setStringPainted(true);
@@ -54,7 +56,7 @@ public class GenericBar extends JPanel {
 		bar.repaint();
 	}
 	public int getValue() {
-		return this.value;
+		return value;
 	}
 	public void setMaximum(int max) {
 		bar.setMaximum(max);

@@ -1,8 +1,11 @@
 package GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.util.Random;
 
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -22,10 +25,19 @@ public class Enemy extends Character {
 
 	private int maximumHP, hp;
 	
+	private JLabel levelLabel = new JLabel("");
 	public int x, y;
 	
 	public Enemy(int xPos, int yPos, int lvl, String enemyName) {
 		super(xPos, yPos, lvl, enemyName, 500 * lvl, 500 * lvl);
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		setIcon(left);
+		levelLabel.setText("LVL " + lvl);
+		levelLabel.setVisible(true);
+		levelLabel.setPreferredSize(new Dimension(64, 8));
+		levelLabel.setForeground(Color.white);
+		//levelLabel.setOpaque(true);
+		this.add(levelLabel);
 		x = xPos;
 		y = yPos;
 		Main.enemies.add(this);

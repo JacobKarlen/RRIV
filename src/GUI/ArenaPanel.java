@@ -4,56 +4,30 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Game.ArenaLoop;
 import Game.Main;
 
 public class ArenaPanel extends JPanel {
 	
 	private int[] enemyHealthLevel = {100, 200, 300};
 	
-	private JPanel playerPanel,
-					enemyPanel,
-					vsPanel,
+	private static JPanel vsPanel,
 					controlPanel;
 	
-	private class FighterPanel extends JPanel {
-		
-		private JLabel fighterName = new JLabel();
-		private HealthBar fighterHP;
-		private EnergyBar fighterEnergy = new EnergyBar();
-		
-		private FighterPanel(Character fighter) {
-			
-			setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-			
-			setSize(new Dimension(300, 588));
-			setPreferredSize(new Dimension(300, 588));
-			setVisible(true);
-			setBackground(Color.black);
-			setOpaque(true);
-			
-			fighterName.setText(fighter.getName() + ", " + fighter.getLevel()); // the real one
-			fighterName.setBackground(Color.lightGray);
-			fighterName.setPreferredSize(new Dimension(300, 30));
-			fighterName.setBorder(BorderFactory.createLineBorder(Color.green, 3));
-			fighterName.setFont(new Font("Arial", Font.PLAIN, 22));
-			fighterName.setHorizontalAlignment(0);
-			fighterName.setForeground(Color.black);
-			fighterName.setOpaque(true);
-			
-			add(fighterName);
-			fighterHP = new HealthBar(fighter.getHP(), fighter.getMaximumHP());
-			fighterHP.updateValue(fighter.getHP());
-			add(fighterHP);
-			fighterEnergy = new EnergyBar();
-			add(fighterEnergy);
-		}
-	}
+	private static FighterPanel playerPanel, enemyPanel;
+	
+	private static Enemy enemy;
+	
+	public JButton basic, block, special, ultra;
+	
+	
 	
 	private class VsPanel extends JPanel {
 		
@@ -70,15 +44,34 @@ public class ArenaPanel extends JPanel {
 		}
 	}
 	
+	private class ButtonListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if(ArenaLoop.turn) {
+				if(e.getSource() == basic) {
+					useBasic();
+				} else if(e.getSource() == block) {
+					useBlock();
+				} else if(e.getSource() == special) {
+					useSpecial();
+				} else if(e.getSource() == ultra) {
+					useUltra();
+				}
+				//ArenaLoop.turn = !ArenaLoop.turn;
+			}
+		}
+	}
+	
+	private ButtonListener BL = new ButtonListener();
+	
 	private class ControlPanel extends JPanel {
 		
 		private int playerLevel = Main.roger.getLevel();
-		
-		private JButton basic = new JButton("<html><center>" + "Basic Attack (Deal " + playerLevel * 15 + " damage, restore 50 energy.)" + "</center></html>"),
-				block = new JButton("<html><center>"+ "Shield Block (Block next attack, restore 50 energy)" + "</center></html>"),
-				special= new JButton("<html><center>" + "Special Attack (Deal " + playerLevel * 50 + "-" + playerLevel * 100 + " damage, use 150 energy)" + "</center></html>"),
-				ultra = new JButton("<html><center>" + "Ultra Attack (Deal " + playerLevel * 150 + "-" + playerLevel * 300 + " damage, use 500 energy)" + "</center></html>");
-		
+		{
+		 basic = new JButton("<html><center>" + "Basic Attack (Deal " + playerLevel * 15 + " damage, restore 50 energy.)" + "</center></html>");
+		 block = new JButton("<html><center>"+ "Shield Block (Block next attack, restore 50 energy)" + "</center></html>");
+		 special= new JButton("<html><center>" + "Special Attack (Deal " + playerLevel * 50 + "-" + playerLevel * 100 + " damage, use 150 energy)" + "</center></html>");
+		 ultra = new JButton("<html><center>" + "Ultra Attack (Deal " + playerLevel * 150 + "-" + playerLevel * 300 + " damage, use 500 energy)" + "</center></html>");
+		}
 		private ControlPanel() {
 			setPreferredSize(new Dimension(832, 180));
 			setVisible(true);
@@ -87,19 +80,23 @@ public class ArenaPanel extends JPanel {
 			
 			add(basic);
 			basic.setPreferredSize(new Dimension(140, 80));
+			basic.addActionListener(BL);
 			
 			add(block);
 			block.setPreferredSize(new Dimension(140, 80));
+			block.addActionListener(BL);
 			
 			add(special);
 			special.setPreferredSize(new Dimension(140, 80));
+			special.addActionListener(BL);
 			
 			add(ultra);
 			ultra.setPreferredSize(new Dimension(140, 80));
+			ultra.addActionListener(BL);
 		}
 	}
 	
-	public ArenaPanel(Enemy enemy) {
+	public ArenaPanel(Enemy _enemy) {
 		// main container panel
 		setSize(832, 768);
 		setPreferredSize(new Dimension(832, 768));
@@ -113,16 +110,28 @@ public class ArenaPanel extends JPanel {
 		
 		vsPanel = new VsPanel();
 		
+		enemy = _enemy;
+		
 		enemyPanel = new FighterPanel(enemy);
 		
-		controlPanel = new ControlPanel();
-		
+		controlPanel = new ControlPanel();	
 		
 		add(playerPanel);
 		add(vsPanel);
 		add(enemyPanel);
 		add(controlPanel);
+	}
+	public static void useBasic() {
+		enemyPanel.updateHP(Main.roger.getLevel() * 15);
+		playerPanel.updateEnergy(50);
+	}
+	public static void useBlock() {
 		
+	}
+	public static void useSpecial() {
+		
+	}
+	public static void useUltra() {
 		
 	}
 }

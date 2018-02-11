@@ -1,9 +1,9 @@
 package Game;
 
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import GUI.ControlPanel;
 import GUI.Display;
 import GUI.Enemy;
 import GUI.Map;
@@ -29,18 +29,16 @@ public class Main {
 				roger.move();
 				for(int i = 0; i < enemies.size(); i++) {
 					if(roger.x == enemies.get(i).x && roger.y == enemies.get(i).y) {
-						roger.setHP(roger.getHP() - 20);
-						ControlPanel.hpBar.updateValue(roger.getHP());
 						ArenaLoop.ArenaBattle(enemy);
 					}
 				}
 			}
-			if(counter % 50000000 == 0) {
-				for(int i = 0; i < enemies.size(); i++) {
+			if (counter % 50000000 == 0) {
+				for (int i = 0; i < enemies.size(); i++) {
 					enemies.get(i).move();
 				}
 			}
-		
+
+		}
 	}
-}
 }
